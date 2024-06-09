@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const MenuItemForm = ({
   addMenuItem,
@@ -54,56 +55,89 @@ const MenuItemForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        maxWidth: 400,
+        mx: "auto",
+        mt: 4,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 1,
+        bgcolor: "background.paper",
+      }}
+    >
+      <Typography
+        variant="h6"
+        component="h2"
+        sx={{ mb: 2, textAlign: "center" }}
+      >
+        {currentItem ? "Update" : "Add"} Menu Item
+      </Typography>
+      <TextField
+        label="Category"
         name="category"
         value={item.category}
         onChange={handleChange}
-        placeholder="Category"
         required
+        fullWidth
+        variant="outlined"
       />
-      <input
-        type="text"
+      <TextField
+        label="Name"
         name="name"
         value={item.name}
         onChange={handleChange}
-        placeholder="Name"
         required
+        fullWidth
+        variant="outlined"
       />
-      <input
-        type="text"
+      <TextField
+        label="Options (comma-separated)"
         name="options"
         value={item.options}
         onChange={handleChange}
-        placeholder="Options (comma-separated)"
+        fullWidth
+        variant="outlined"
       />
-      <input
-        type="number"
+      <TextField
+        label="Price"
         name="price"
+        type="number"
         value={item.price}
         onChange={handleChange}
-        placeholder="Price"
         required
+        fullWidth
+        variant="outlined"
       />
-      <input
-        type="number"
+      <TextField
+        label="Cost"
         name="cost"
+        type="number"
         value={item.cost}
         onChange={handleChange}
-        placeholder="Cost"
         required
+        fullWidth
+        variant="outlined"
       />
-      <input
-        type="number"
+      <TextField
+        label="Stock"
         name="stock"
+        type="number"
         value={item.stock}
         onChange={handleChange}
-        placeholder="Stock"
         required
+        fullWidth
+        variant="outlined"
       />
-      <button type="submit">{currentItem ? "Update" : "Add"} Item</button>
-    </form>
+      <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+        {currentItem ? "Update" : "Add"} Item
+      </Button>
+    </Box>
   );
 };
 
